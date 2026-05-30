@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "mouse",
+  "version": "${version}",
+  "name": "mouse",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/mouse/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "NXxueyue.mouse.client.MouseDataGenerator"
+    ],
+    "client": [
+      "NXxueyue.mouse.client.MouseClient"
+    ],
+    "main": [
+      "NXxueyue.mouse.Mouse"
+    ]
+  },
+  "mixins": [
+    "mouse.mixins.json",
+    {
+      "config": "mouse.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

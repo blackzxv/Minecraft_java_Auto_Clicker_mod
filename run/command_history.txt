@@ -1,0 +1,3 @@
+/tp 0 -60 0
+/tp 0 -60 0.8
+/summon minecraft:pig
