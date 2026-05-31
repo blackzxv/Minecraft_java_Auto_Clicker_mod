@@ -1,0 +1,159 @@
+---- Minecraft Crash Report ----
+// Hey, that tickles! Hehehe!
+
+Time: 2026-05-31 16:04:22
+Description: Initializing game
+
+java.lang.RuntimeException: Could not execute entrypoint stage 'main' due to errors, provided by 'mouse' at 'NXxueyue.mouse.Mouse'!
+	at net.fabricmc.loader.impl.FabricLoaderImpl.lambda$invokeEntrypoints$2(FabricLoaderImpl.java:403)
+	at net.fabricmc.loader.impl.util.ExceptionUtil.gatherExceptions(ExceptionUtil.java:33)
+	at net.fabricmc.loader.impl.FabricLoaderImpl.invokeEntrypoints(FabricLoaderImpl.java:401)
+	at net.fabricmc.loader.impl.game.minecraft.Hooks.startClient(Hooks.java:52)
+	at net.minecraft.client.MinecraftClient.<init>(MinecraftClient.java:484)
+	at net.minecraft.client.main.Main.main(Main.java:223)
+	at net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:480)
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:74)
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23)
+	at net.fabricmc.devlaunchinjector.Main.main(Main.java:86)
+Caused by: net.fabricmc.loader.api.EntrypointException: Exception while loading entries for entrypoint 'main' provided by 'mouse'
+	at net.fabricmc.loader.impl.entrypoint.EntrypointContainerImpl.getEntrypoint(EntrypointContainerImpl.java:56)
+	at net.fabricmc.loader.impl.FabricLoaderImpl.invokeEntrypoints(FabricLoaderImpl.java:399)
+	... 7 more
+Caused by: java.lang.RuntimeException: Mixin transformation of NXxueyue.mouse.Mouse failed
+	at net.fabricmc.loader.impl.launch.knot.KnotClassDelegate.getPostMixinClassByteArray(KnotClassDelegate.java:427)
+	at net.fabricmc.loader.impl.launch.knot.KnotClassDelegate.tryLoadClass(KnotClassDelegate.java:323)
+	at net.fabricmc.loader.impl.launch.knot.KnotClassDelegate.loadClass(KnotClassDelegate.java:218)
+	at net.fabricmc.loader.impl.launch.knot.KnotClassLoader.loadClass(KnotClassLoader.java:119)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:536)
+	at java.base/java.lang.Class.forName(Class.java:515)
+	at net.fabricmc.loader.impl.util.DefaultLanguageAdapter.create(DefaultLanguageAdapter.java:50)
+	at net.fabricmc.loader.impl.entrypoint.EntrypointStorage$NewEntry.getOrCreate(EntrypointStorage.java:124)
+	at net.fabricmc.loader.impl.entrypoint.EntrypointContainerImpl.getEntrypoint(EntrypointContainerImpl.java:53)
+	... 8 more
+Caused by: org.spongepowered.asm.mixin.transformer.throwables.IllegalClassLoadError: NXxueyue.mouse.Mouse is in a defined mixin package NXxueyue.mouse.* owned by mouse.client.mixins.json and cannot be referenced directly
+	at org.spongepowered.asm.mixin.transformer.MixinProcessor.applyMixins(MixinProcessor.java:334)
+	at org.spongepowered.asm.mixin.transformer.MixinTransformer.transformClass(MixinTransformer.java:234)
+	at org.spongepowered.asm.mixin.transformer.MixinTransformer.transformClassBytes(MixinTransformer.java:202)
+	at net.fabricmc.loader.impl.launch.knot.KnotClassDelegate.getPostMixinClassByteArray(KnotClassDelegate.java:422)
+	... 18 more
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at net.fabricmc.loader.impl.FabricLoaderImpl.lambda$invokeEntrypoints$2(FabricLoaderImpl.java:403)
+	at net.fabricmc.loader.impl.util.ExceptionUtil.gatherExceptions(ExceptionUtil.java:33)
+	at net.fabricmc.loader.impl.FabricLoaderImpl.invokeEntrypoints(FabricLoaderImpl.java:401)
+	at net.fabricmc.loader.impl.game.minecraft.Hooks.startClient(Hooks.java:52)
+	at net.minecraft.client.MinecraftClient.<init>(MinecraftClient.java:484)
+
+-- Initialization --
+Details:
+	Modules: 
+Stacktrace:
+	at net.minecraft.client.main.Main.main(Main.java:223)
+	at net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:480)
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:74)
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23)
+	at net.fabricmc.devlaunchinjector.Main.main(Main.java:86)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.20.6
+	Minecraft Version ID: 1.20.6
+	Operating System: Linux (aarch64) version 5.10.236-android12-9-g29f7a3c6d3d9
+	Java Version: 21.0.11, Azul Systems, Inc.
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Azul Systems, Inc.
+	Memory: 144093640 bytes (137 MiB) / 421527552 bytes (402 MiB) up to 3038773248 bytes (2898 MiB)
+	CPUs: 2
+	Processor Vendor: ARM
+	Processor Name: 
+	Identifier: ARM Family 8 Model 0xd41 Stepping r2p0
+	Microarchitecture: unknown
+	Frequency (GHz): -0.00
+	Number of physical packages: 1
+	Number of physical CPUs: 1
+	Number of logical CPUs: 8
+	Graphics card #0 name: QXL paravirtual graphic card
+	Graphics card #0 vendor: Red Hat, Inc. (0x1b36)
+	Graphics card #0 VRAM (MB): 0.00
+	Graphics card #0 deviceId: 0x0100
+	Graphics card #0 versionInfo: unknown
+	Virtual memory max (MB): 17377.48
+	Virtual memory used (MB): 12997.96
+	Swap memory total (MB): 11584.98
+	Swap memory used (MB): 3605.13
+	JVM Flags: 0 total; 
+	Fabric Mods: 
+		fabric-api: Fabric API 0.100.8+1.20.6
+		fabric-api-base: Fabric API Base 0.4.40+80f8cf51b0
+		fabric-api-lookup-api-v1: Fabric API Lookup API (v1) 1.6.59+e9d2a72bb0
+		fabric-biome-api-v1: Fabric Biome API (v1) 13.0.25+be5d88beb0
+		fabric-block-api-v1: Fabric Block API (v1) 1.0.20+6dfe4c9bb0
+		fabric-block-view-api-v2: Fabric BlockView API (v2) 1.0.8+80f8cf51b0
+		fabric-blockrenderlayer-v1: Fabric BlockRenderLayer Registration (v1) 1.1.50+80f8cf51b0
+		fabric-client-tags-api-v1: Fabric Client Tags 1.1.12+7f945d5bb0
+		fabric-command-api-v1: Fabric Command API (v1) 1.2.45+f71b366fb0
+		fabric-command-api-v2: Fabric Command API (v2) 2.2.24+80f8cf51b0
+		fabric-commands-v0: Fabric Commands (v0) 0.2.62+df3654b3b0
+		fabric-content-registries-v0: Fabric Content Registries (v0) 8.0.6+b82b2392b0
+		fabric-convention-tags-v1: Fabric Convention Tags 2.0.7+7f945d5bb0
+		fabric-convention-tags-v2: Fabric Convention Tags (v2) 2.1.3+f4bfb622b0
+		fabric-crash-report-info-v1: Fabric Crash Report Info (v1) 0.2.27+80f8cf51b0
+		fabric-data-attachment-api-v1: Fabric Data Attachment API (v1) 1.1.17+2a2c66b6b0
+		fabric-data-generation-api-v1: Fabric Data Generation API (v1) 19.2.5+a5d5299db0
+		fabric-dimensions-v1: Fabric Dimensions API (v1) 2.1.68+94793913b0
+		fabric-entity-events-v1: Fabric Entity Events (v1) 1.6.8+e9d2a72bb0
+		fabric-events-interaction-v0: Fabric Events Interaction (v0) 0.7.6+c5fc38b3b0
+		fabric-game-rule-api-v1: Fabric Game Rule API (v1) 1.0.50+80f8cf51b0
+		fabric-gametest-api-v1: Fabric Game Test API (v1) 1.3.18+1172e897b0
+		fabric-item-api-v1: Fabric Item API (v1) 8.2.3+6e5bbc4ab0
+		fabric-item-group-api-v1: Fabric Item Group API (v1) 4.1.1+f4bfb622b0
+		fabric-key-binding-api-v1: Fabric Key Binding API (v1) 1.0.45+80f8cf51b0
+		fabric-keybindings-v0: Fabric Key Bindings (v0) 0.2.43+df3654b3b0
+		fabric-lifecycle-events-v1: Fabric Lifecycle Events (v1) 2.3.4+c5fc38b3b0
+		fabric-loot-api-v2: Fabric Loot API (v2) 3.0.6+97f703dab0
+		fabric-message-api-v1: Fabric Message API (v1) 6.0.11+a7dc0e41b0
+		fabric-model-loading-api-v1: Fabric Model Loading API (v1) 1.0.12+80f8cf51b0
+		fabric-models-v0: Fabric Models (v0) 0.4.11+9386d8a7b0
+		fabric-networking-api-v1: Fabric Networking API (v1) 4.2.0+a916f7c5b0
+		fabric-object-builder-api-v1: Fabric Object Builder API (v1) 15.1.5+c5fc38b3b0
+		fabric-particles-v1: Fabric Particles (v1) 4.0.0+c5fc38b3b0
+		fabric-recipe-api-v1: Fabric Recipe API (v1) 5.0.6+9c745bbbb0
+		fabric-registry-sync-v0: Fabric Registry Sync (v0) 5.0.19+c7d49fa1b0
+		fabric-renderer-api-v1: Fabric Renderer API (v1) 3.3.0+81dac6a1b0
+		fabric-renderer-indigo: Fabric Renderer - Indigo 1.5.15+41791025b0
+		fabric-renderer-registries-v1: Fabric Renderer Registries (v1) 3.2.62+df3654b3b0
+		fabric-rendering-data-attachment-v1: Fabric Rendering Data Attachment (v1) 0.3.46+73761d2eb0
+		fabric-rendering-fluids-v1: Fabric Rendering Fluids (v1) 3.1.3+2c869dedb0
+		fabric-rendering-v0: Fabric Rendering (v0) 1.1.65+df3654b3b0
+		fabric-rendering-v1: Fabric Rendering (v1) 4.2.5+850ef40bb0
+		fabric-resource-conditions-api-v1: Fabric Resource Conditions API (v1) 4.2.0+a5d5299db0
+		fabric-resource-loader-v0: Fabric Resource Loader (v0) 1.1.1+f4bfb622b0
+		fabric-screen-api-v1: Fabric Screen API (v1) 2.0.21+7b70ea8ab0
+		fabric-screen-handler-api-v1: Fabric Screen Handler API (v1) 1.3.76+8c7b71c2b0
+		fabric-sound-api-v1: Fabric Sound API (v1) 1.0.21+c5fc38b3b0
+		fabric-transfer-api-v1: Fabric Transfer API (v1) 5.1.7+7fc4b352b0
+		fabric-transitive-access-wideners-v1: Fabric Transitive Access Wideners (v1) 6.0.10+74e2f560b0
+		fabricloader: Fabric Loader 0.16.5
+		java: OpenJDK 64-Bit Server VM 21
+		minecraft: Minecraft 1.20.6
+		mixinextras: MixinExtras 0.4.1
+		mouse: mouse 1.0-SNAPSHOT
+	Launched Version: Fabric
+	Backend library: LWJGL version 3.3.3-snapshot
+	Backend API: Unknown
+	Window size: <not initialized>
+	GL Caps: Using framebuffer using OpenGL 3.2
+	GL debug messages: <disabled>
+	Using VBOs: Yes
+	Is Modded: Definitely; Client brand changed to 'fabric'
+	Universe: 404
+	Type: Client (map_client.txt)
+	Locale: zh_CN
+	CPU: <unknown>

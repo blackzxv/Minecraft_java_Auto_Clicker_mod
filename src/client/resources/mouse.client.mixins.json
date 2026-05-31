@@ -1,14 +1,11 @@
+
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "NXxueyue.mouse.mixin.client",
+  "package": "NXxueyue.mouse.mixin",
   "compatibilityLevel": "JAVA_21",
-  "client": [
-  ],
+
   "injectors": {
     "defaultRequire": 1
-  },
-  "overwrites": {
-    "requireAnnotations": true
   }
 }
